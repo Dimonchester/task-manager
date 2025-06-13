@@ -10,5 +10,5 @@
 ## Сборка
 ```bash
 git clone https://github.com/Dimonchester/task-manager.git
-cd java-task-manager
+cd task-manager
 gradlew build
