@@ -1,15 +1,25 @@
 package model;
 
-import java.time.LocalDate;
-import java.util.List;
+public class Task implements Comparable<Task> {
+    private final String id;
+    private final long deadline; // Unix timestamp в миллисекундах
+    private final int priority;
 
-public class Task {
-    private int id;
-    private String title;
-    private String description;
-    // private Priority priority;
-    private LocalDate deadline;
-    private List<String> tags;
+    public Task(String id, long deadline, int priority) {
+        this.id = id;
+        this.deadline = deadline;
+        this.priority = priority;
+    }
 
-    // Геттеры/сеттеры + конструктор
+    @Override
+    public int compareTo(Task other) {
+        int deadlineCompare = Long.compare(this.deadline, other.deadline);
+        return deadlineCompare != 0 ? deadlineCompare :
+                Integer.compare(other.priority, this.priority);
+    }
+
+    // Геттеры
+    public String getId() { return id; }
+    public long getDeadline() { return deadline; }
+    public int getPriority() { return priority; }
 }
