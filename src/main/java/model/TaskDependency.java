@@ -19,7 +19,6 @@ public class TaskDependency {
         TaskDependency that = (TaskDependency) o;
         return task.equals(that.task) && dependsOn.equals(that.dependsOn);
     }
-
     @Override
     public int hashCode() {
         return 31 * task.hashCode() + dependsOn.hashCode();
