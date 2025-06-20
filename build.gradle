@@ -20,5 +20,9 @@ test {
 }
 
 application {
-    mainClass = 'com.taskmanager.Main'
+    mainClass = 'org.example.Main'
+}
+
+run {
+    standardInput = System.in
 }
