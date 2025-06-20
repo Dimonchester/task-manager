@@ -3,6 +3,9 @@ package algorithm;
 import datastructure.BinaryHeap;
 import model.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EDFScheduler {
     private final BinaryHeap<Task> queue;
 
@@ -20,5 +23,16 @@ public class EDFScheduler {
 
     public boolean hasTasks() {
         return !queue.isEmpty();
+    }
+
+    public List<Task> getAllTasks() {
+        List<Task> tasks = new ArrayList<>();
+        while (hasTasks()) {
+            Task task = getNextTask();
+            tasks.add(task);
+        }
+        // Восстанавливаем очередь
+        tasks.forEach(this::addTask);
+        return tasks;
     }
 }
