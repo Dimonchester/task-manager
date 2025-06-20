@@ -1,5 +1,3 @@
-// Файл: E:\task-manager\src\main\java\model\Task.java
-// Основан на оригинальном файле
 package model;
 
 import java.time.LocalDate;
@@ -38,7 +36,7 @@ public class Task implements Comparable<Task> {
             return 0;
         }
         if (this.deadline == null) {
-            return 1; // Задачи без дедлайна имеют меньший приоритет
+            return 1;
         }
         if (other.deadline == null) {
             return -1;
