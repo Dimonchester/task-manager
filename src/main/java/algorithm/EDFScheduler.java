@@ -1,17 +1,17 @@
 package algorithm;
 
+import datastructure.BinaryHeap;
 import model.Task;
-import java.util.PriorityQueue;
 
 public class EDFScheduler {
-    private final PriorityQueue<Task> queue;
+    private final BinaryHeap<Task> queue;
 
     public EDFScheduler() {
-        this.queue = new PriorityQueue<>();
+        this.queue = new BinaryHeap<>();
     }
 
     public void addTask(Task task) {
-        queue.offer(task);
+        queue.add(task);
     }
 
     public Task getNextTask() {
