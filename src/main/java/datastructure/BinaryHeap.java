@@ -13,12 +13,14 @@ public class BinaryHeap<T extends Comparable<T>> {
     }
 
     public T poll() {
-        if (isEmpty()) throw new NoSuchElementException();
+        if (isEmpty()) throw new NoSuchElementException("Heap is empty.");
         T result = heap.get(0);
-        T last = heap.remove(heap.size() - 1);
-        if (!isEmpty()) {
+        if (heap.size() > 1) {
+            T last = heap.remove(heap.size() - 1);
             heap.set(0, last);
             siftDown(0);
+        } else {
+            heap.remove(0);
         }
         return result;
     }
@@ -30,25 +32,29 @@ public class BinaryHeap<T extends Comparable<T>> {
     private void siftUp(int index) {
         if (index == 0) return;
         int parentIndex = (index - 1) / 2;
-        if (heap.get(index).compareTo(heap.get(parentIndex)) > 0) {
+        // Изменено на < для реализации min-heap
+        if (heap.get(index).compareTo(heap.get(parentIndex)) < 0) {
             swap(index, parentIndex);
             siftUp(parentIndex);
         }
     }
 
     private void siftDown(int index) {
-        int left = 2 * index + 1;
-        int right = 2 * index + 2;
-        int largest = index;
-        if (left < heap.size() && heap.get(left).compareTo(heap.get(largest)) > 0) {
-            largest = left;
+        int leftChildIndex = 2 * index + 1;
+        int rightChildIndex = 2 * index + 2;
+        int smallest = index;
+
+        // Изменено на < для реализации min-heap
+        if (leftChildIndex < heap.size() && heap.get(leftChildIndex).compareTo(heap.get(smallest)) < 0) {
+            smallest = leftChildIndex;
         }
-        if (right < heap.size() && heap.get(right).compareTo(heap.get(largest)) > 0) {
-            largest = right;
+        if (rightChildIndex < heap.size() && heap.get(rightChildIndex).compareTo(heap.get(smallest)) < 0) {
+            smallest = rightChildIndex;
         }
-        if (largest != index) {
-            swap(index, largest);
-            siftDown(largest);
+
+        if (smallest != index) {
+            swap(index, smallest);
+            siftDown(smallest);
         }
     }
 
