@@ -27,6 +27,35 @@ public class Trie {
         return collectWords(node, prefix);
     }
 
+    public void delete(String word) {
+        delete(root, word, 0);
+    }
+
+    private boolean delete(TrieNode current, String word, int index) {
+        if (index == word.length()) {
+            if (!current.isEndOfWord) {
+                return false;
+            }
+            current.isEndOfWord = false;
+            return current.children.isEmpty();
+        }
+
+        char ch = word.charAt(index);
+        TrieNode node = current.children.get(ch);
+        if (node == null) {
+            return false;
+        }
+
+        boolean shouldDeleteChild = delete(node, word, index + 1);
+
+        if (shouldDeleteChild) {
+            current.children.remove(ch);
+            return !current.isEndOfWord && current.children.isEmpty();
+        }
+
+        return false;
+    }
+
     private TrieNode findNode(String prefix) {
         TrieNode current = root;
         for (char ch : prefix.toCharArray()) {
