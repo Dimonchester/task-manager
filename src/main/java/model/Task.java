@@ -1,22 +1,25 @@
+// Файл: E:\task-manager\src\main\java\model\Task.java
+// Основан на оригинальном файле
 package model;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-public class Task {
+public class Task implements Comparable<Task> {
     private final int id;
     private String title;
     private String description;
     private LocalDate deadline;
     private final Set<String> tags = new HashSet<>();
 
-    public Task(int id, String title) {
+    public Task(int id, String title, LocalDate deadline) {
         this.id = id;
         this.title = title;
+        this.deadline = deadline;
     }
 
-    // Добавьте эти методы:
     public int getId() { return id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
@@ -30,6 +33,20 @@ public class Task {
     public boolean hasTag(String tag) { return tags.contains(tag.toLowerCase()); }
 
     @Override
+    public int compareTo(Task other) {
+        if (this.deadline == null && other.deadline == null) {
+            return 0;
+        }
+        if (this.deadline == null) {
+            return 1; // Задачи без дедлайна имеют меньший приоритет
+        }
+        if (other.deadline == null) {
+            return -1;
+        }
+        return this.deadline.compareTo(other.deadline);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -39,6 +56,15 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return id;
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", deadline=" + deadline +
+                '}';
     }
 }
