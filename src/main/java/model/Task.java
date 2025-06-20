@@ -1,25 +1,69 @@
+// Файл: E:\task-manager\src\main\java\model\Task.java
+// Основан на оригинальном файле
 package model;
 
-public class Task implements Comparable<Task> {
-    private final String id;
-    private final long deadline; // Unix timestamp в миллисекундах
-    private final int priority;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-    public Task(String id, long deadline, int priority) {
+public class Task implements Comparable<Task> {
+    private final int id;
+    private String title;
+    private String description;
+    private LocalDate deadline;
+    private final Set<String> tags = new HashSet<>();
+
+    public Task(int id, String title) {
         this.id = id;
-        this.deadline = deadline;
-        this.priority = priority;
+        this.title = title;
     }
+
+    public int getId() { return id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public LocalDate getDeadline() { return deadline; }
+    public void setDeadline(LocalDate deadline) { this.deadline = deadline; }
+    public Set<String> getTags() { return new HashSet<>(tags); }
+    public void addTag(String tag) { tags.add(tag.toLowerCase()); }
+    public void removeTag(String tag) { tags.remove(tag.toLowerCase()); }
+    public boolean hasTag(String tag) { return tags.contains(tag.toLowerCase()); }
 
     @Override
     public int compareTo(Task other) {
-        int deadlineCompare = Long.compare(this.deadline, other.deadline);
-        return deadlineCompare != 0 ? deadlineCompare :
-                Integer.compare(other.priority, this.priority);
+        if (this.deadline == null && other.deadline == null) {
+            return 0;
+        }
+        if (this.deadline == null) {
+            return 1; // Задачи без дедлайна имеют меньший приоритет
+        }
+        if (other.deadline == null) {
+            return -1;
+        }
+        return this.deadline.compareTo(other.deadline);
     }
 
-    // Геттеры
-    public String getId() { return id; }
-    public long getDeadline() { return deadline; }
-    public int getPriority() { return priority; }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", deadline=" + deadline +
+                '}';
+    }
 }
