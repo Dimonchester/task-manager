@@ -11,6 +11,10 @@ public class CycleDetector {
             return false;
         }
 
+        if (dependencies == null) {
+            dependencies = new HashSet<>();
+        }
+
         Map<Task, Set<Task>> graph = buildGraph(tasks, dependencies);
         Set<Task> visited = new HashSet<>();
         Set<Task> recursionStack = new HashSet<>();
