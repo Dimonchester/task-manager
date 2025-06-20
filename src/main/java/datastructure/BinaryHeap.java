@@ -32,7 +32,6 @@ public class BinaryHeap<T extends Comparable<T>> {
     private void siftUp(int index) {
         if (index == 0) return;
         int parentIndex = (index - 1) / 2;
-        // Изменено на < для реализации min-heap
         if (heap.get(index).compareTo(heap.get(parentIndex)) < 0) {
             swap(index, parentIndex);
             siftUp(parentIndex);
@@ -44,7 +43,6 @@ public class BinaryHeap<T extends Comparable<T>> {
         int rightChildIndex = 2 * index + 2;
         int smallest = index;
 
-        // Изменено на < для реализации min-heap
         if (leftChildIndex < heap.size() && heap.get(leftChildIndex).compareTo(heap.get(smallest)) < 0) {
             smallest = leftChildIndex;
         }
