@@ -241,27 +241,27 @@ public class Main {
     }
 
     private static void addInitialData() {
-        Task t1 = new Task(1, "Design architecture", LocalDateTime.parse("2025-07-01 12:00"));
+        Task t1 = new Task(1, "Design architecture", LocalDateTime.parse("2025-07-01T12:00"));
         t1.addTag("project");
         t1.addTag("architecture");
         taskManager.addTask(t1);
 
-        Task t2 = new Task(2, "Implement core system", LocalDateTime.parse("2025-07-15 13:00"));
+        Task t2 = new Task(2, "Implement core system", LocalDateTime.parse("2025-07-15T13:00"));
         t2.addTag("project");
         t2.addTag("development");
         taskManager.addTask(t2);
 
-        Task t3 = new Task(3, "Write tests", LocalDateTime.parse("2025-07-20 14:00"));
+        Task t3 = new Task(3, "Write tests", LocalDateTime.parse("2025-07-20T14:00"));
         t3.addTag("project");
         t3.addTag("qa");
         taskManager.addTask(t3);
 
-        Task t4 = new Task(4, "Prepare documentation", LocalDateTime.parse("2025-07-18 15:00"));
+        Task t4 = new Task(4, "Prepare documentation", LocalDateTime.parse("2025-07-18T15:00"));
         t4.addTag("documentation");
         t4.addTag("ga");
         taskManager.addTask(t4);
 
-        Task t5 = new Task(10, "Requirements analysis", LocalDateTime.parse("2025-06-25 12:00"));
+        Task t5 = new Task(10, "Requirements analysis", LocalDateTime.parse("2025-06-25T12:00"));
         t5.addTag("project");
         t5.addTag("analysis");
         taskManager.addTask(t5);
