@@ -11,4 +11,5 @@
 ```bash
 git clone https://github.com/Dimonchester/task-manager.git
 cd task-manager
-gradlew build
+./gradlew build
+./gradlew run
