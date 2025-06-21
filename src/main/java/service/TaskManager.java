@@ -10,7 +10,7 @@ import datastructure.Trie;
 import model.Task;
 import model.TaskDependency;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,7 +24,7 @@ public class TaskManager {
     private final TagFilter tagFilter = new TagFilter();
     private final Trie titleTrie = new Trie();
 
-    public void addNewTask(int id, String title, LocalDate deadline, Set<String> tags) {
+    public void addNewTask(int id, String title, LocalDateTime deadline, Set<String> tags) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Task title can't be empty.");
         }
