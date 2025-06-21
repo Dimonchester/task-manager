@@ -26,7 +26,7 @@ public class TaskManager {
 
     public void addNewTask(int id, String title, LocalDate deadline, Set<String> tags) {
         if (title == null || title.isBlank()) {
-            throw new IllegalArgumentException("Название задачи не может быть пустым.");
+            throw new IllegalArgumentException("Task title can't be empty.");
         }
         Task task = new Task(id, title, deadline);
         if (tags != null) {
@@ -47,7 +47,7 @@ public class TaskManager {
     public Task getTask(int id) {
         Task cachedTask = taskCache.get(id);
         if (cachedTask != null) {
-            System.out.println("(Загружено из кеша)");
+            System.out.println("Loaded from cache");
             return cachedTask;
         }
         Task task = tasks.get(id);

@@ -171,7 +171,12 @@ public class Main {
         if (tasks.isEmpty()) {
             System.out.println("Task list is empty.");
         } else {
-            tasks.forEach(System.out::println);
+            tasks.forEach(task -> {
+                System.out.println("id: " + task.getId());
+                System.out.println("title: " + task.getTitle());
+                System.out.println("deadline: " + task.getDeadline());
+                System.out.println();
+            });
         }
     }
 
@@ -179,7 +184,12 @@ public class Main {
         System.out.println("\n--- Tasks in execution order (Topological Sort) ---");
         try {
             List<Task> tasks = taskManager.getTasksInTopologicalOrder();
-            tasks.forEach(System.out::println);
+            tasks.forEach(task -> {
+                System.out.println("id: " + task.getId());
+                System.out.println("title: " + task.getTitle());
+                System.out.println("deadline: " + task.getDeadline());
+                System.out.println();
+            });
         } catch (Exception e) {
             System.out.println("Sorting error: " + e.getMessage());
         }
@@ -188,7 +198,12 @@ public class Main {
     private static void showTasksScheduledByEDF() {
         System.out.println("\n--- Tasks scheduled by EDF (sorted by deadline) ---");
         List<Task> tasks = taskManager.getScheduledTasksByEDF();
-        tasks.forEach(System.out::println);
+        tasks.forEach(task -> {
+            System.out.println("id: " + task.getId());
+            System.out.println("title: " + task.getTitle());
+            System.out.println("deadline: " + task.getDeadline());
+            System.out.println();
+        });
     }
 
     private static void suggestTasksByTitle() {
@@ -199,7 +214,12 @@ public class Main {
         if (suggestions.isEmpty()) {
             System.out.println("No tasks found with this prefix.");
         } else {
-            suggestions.forEach(System.out::println);
+            suggestions.forEach(task -> {
+                System.out.println("id: " + task.getId());
+                System.out.println("title: " + task.getTitle());
+                System.out.println("deadline: " + task.getDeadline());
+                System.out.println();
+            });
         }
     }
 
@@ -211,7 +231,12 @@ public class Main {
         if (tasks.isEmpty()) {
             System.out.println("No tasks found with this tag.");
         } else {
-            tasks.forEach(System.out::println);
+            tasks.forEach(task -> {
+                System.out.println("id: " + task.getId());
+                System.out.println("title: " + task.getTitle());
+                System.out.println("deadline: " + task.getDeadline());
+                System.out.println();
+            });
         }
     }
 
