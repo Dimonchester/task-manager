@@ -13,7 +13,7 @@ public class TopologicalSorter {
 
         Map<Task, Set<Task>> graph = buildGraph(tasks, dependencies);
         Set<Task> visited = new HashSet<>();
-        LinkedList<Task> result = new LinkedList<>(); // Изменено на LinkedList
+        LinkedList<Task> result = new LinkedList<>();
 
         for (Task task : tasks) {
             if (!visited.contains(task)) {
@@ -21,7 +21,7 @@ public class TopologicalSorter {
             }
         }
 
-        return result; // Теперь порядок прямой
+        return result;
     }
 
     private Map<Task, Set<Task>> buildGraph(Set<Task> tasks, Set<TaskDependency> dependencies) {
@@ -38,6 +38,6 @@ public class TopologicalSorter {
                 dfs(neighbor, graph, visited, result);
             }
         }
-        result.addFirst(task);
+        result.add(task);
     }
 }
