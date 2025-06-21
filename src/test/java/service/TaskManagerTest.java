@@ -4,7 +4,7 @@ import model.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
@@ -17,10 +17,10 @@ class TaskManagerTest {
     @BeforeEach
     void setUp() {
         taskManager = new TaskManager();
-        task1 = new Task(1, "Code feature", LocalDate.now().plusDays(5));
-        task2 = new Task(2, "Write tests", LocalDate.now().plusDays(6));
-        task3 = new Task(3, "Deploy to staging", LocalDate.now().plusDays(7));
-        task4 = new Task(4, "Another Task", LocalDate.now().plusDays(1));
+        task1 = new Task(1, "Code feature", LocalDateTime.now().plusDays(5));
+        task2 = new Task(2, "Write tests", LocalDateTime.now().plusDays(6));
+        task3 = new Task(3, "Deploy to staging", LocalDateTime.now().plusDays(7));
+        task4 = new Task(4, "Another Task", LocalDateTime.now().plusDays(1));
     }
 
     @Test
