@@ -1,6 +1,7 @@
 package algorithm;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class SortAndSearch {
@@ -22,6 +23,31 @@ public class SortAndSearch {
         int i = (begin - 1);
         for (int j = begin; j < end; j++) {
             if (list.get(j).compareTo(pivot) <= 0) {
+                i++;
+                Collections.swap(list, i, j);
+            }
+        }
+        Collections.swap(list, i + 1, end);
+        return i + 1;
+    }
+
+    public static <T> void quickSort(List<T> list, Comparator<T> comparator) {
+        quickSort(list, 0, list.size() - 1, comparator);
+    }
+
+    private static <T> void quickSort(List<T> list, int begin, int end, Comparator<T> comparator) {
+        if (begin < end) {
+            int partitionIndex = partition(list, begin, end, comparator);
+            quickSort(list, begin, partitionIndex - 1, comparator);
+            quickSort(list, partitionIndex + 1, end, comparator);
+        }
+    }
+
+    private static <T> int partition(List<T> list, int begin, int end, Comparator<T> comparator) {
+        T pivot = list.get(end);
+        int i = (begin - 1);
+        for (int j = begin; j < end; j++) {
+            if (comparator.compare(list.get(j), pivot) <= 0) {
                 i++;
                 Collections.swap(list, i, j);
             }
