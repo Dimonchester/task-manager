@@ -13,6 +13,8 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'guru.nidi:graphviz-java:0.18.1'
+    implementation 'org.slf4j:slf4j-nop:1.7.36'
 }
 
 test {

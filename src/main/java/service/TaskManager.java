@@ -137,4 +137,12 @@ public class TaskManager {
     public int findTaskWithBinarySearch(List<Task> sortedList, Task key) {
         return SortAndSearch.binarySearch(sortedList, key);
     }
+
+     public void visualizeDependencies(String filename) {
+        GraphVisualizer.visualizeDependencies(
+            new HashSet<>(tasks.values()), 
+            dependencies, 
+            filename
+        );
+    }
 }
