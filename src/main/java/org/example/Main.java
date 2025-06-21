@@ -57,15 +57,33 @@ public class Main {
         System.out.println("------------");
 
         try {
-            System.out.print("Enter task ID: ");
-            int id = Integer.parseInt(scanner.nextLine());
+            // Ввод ID с валидацией
+            int id;
+            while (true) {
+                try {
+                    System.out.print("Enter task ID: ");
+                    id = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: Invalid ID format. Please enter a number.");
+                }
+            }
 
             System.out.print("Enter task title: ");
             String title = scanner.nextLine();
 
-            System.out.print("Enter deadline (YYYY-MM-DD): ");
-            String dateInput = scanner.nextLine();
-            LocalDate deadline = LocalDate.parse(dateInput, dateFormatter);
+            // Ввод даты с валидацией
+            LocalDate deadline;
+            while (true) {
+                try {
+                    System.out.print("Enter deadline (YYYY-MM-DD): ");
+                    String dateInput = scanner.nextLine();
+                    deadline = LocalDate.parse(dateInput, dateFormatter);
+                    break;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Error: Invalid date format. Please use YYYY-MM-DD.");
+                }
+            }
 
             Task task = new Task(id, title, deadline);
 
@@ -83,12 +101,8 @@ public class Main {
             scheduler.addTask(task);
             System.out.println("Task added successfully!");
 
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Invalid ID format. Please enter a number.");
-        } catch (DateTimeParseException e) {
-            System.out.println("Error: Invalid date format. Please use YYYY-MM-DD.");
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Unexpected error: " + e.getMessage());
         }
     }
 
