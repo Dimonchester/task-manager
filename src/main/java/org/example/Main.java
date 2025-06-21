@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static final TaskManager taskManager = new TaskManager();
 
     public static void main(String[] args) {
@@ -66,7 +66,7 @@ public class Main {
             int id = Integer.parseInt(scanner.nextLine());
             System.out.print("Enter task title: ");
             String title = scanner.nextLine();
-            System.out.print("Enter deadline (yyyy-MM-dd) or leave empty: ");
+            System.out.print("Enter deadline yyyy-MM-dd HH:mm or leave empty: ");
             String deadlineStr = scanner.nextLine();
             LocalDate deadline = deadlineStr.isEmpty() ? null : LocalDate.parse(deadlineStr, dateFormatter);
 
@@ -82,7 +82,7 @@ public class Main {
         } catch (NumberFormatException e) {
             System.out.println("Error: ID must be a number.");
         } catch (DateTimeParseException e) {
-            System.out.println("Error: Invalid date format. Use yyyy-MM-dd.");
+            System.out.println("Error: Invalid date format. Use yyyy-MM-dd HH:mm.");
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
@@ -241,27 +241,27 @@ public class Main {
     }
 
     private static void addInitialData() {
-        Task t1 = new Task(1, "Design architecture", LocalDate.parse("2025-07-01"));
+        Task t1 = new Task(1, "Design architecture", LocalDate.parse("2025-07-01 12:00"));
         t1.addTag("project");
         t1.addTag("architecture");
         taskManager.addTask(t1);
 
-        Task t2 = new Task(2, "Implement core system", LocalDate.parse("2025-07-15"));
+        Task t2 = new Task(2, "Implement core system", LocalDate.parse("2025-07-15 13:00"));
         t2.addTag("project");
         t2.addTag("development");
         taskManager.addTask(t2);
 
-        Task t3 = new Task(3, "Write tests", LocalDate.parse("2025-07-20"));
+        Task t3 = new Task(3, "Write tests", LocalDate.parse("2025-07-20 14:00"));
         t3.addTag("project");
         t3.addTag("qa");
         taskManager.addTask(t3);
 
-        Task t4 = new Task(4, "Prepare documentation", LocalDate.parse("2025-07-18"));
+        Task t4 = new Task(4, "Prepare documentation", LocalDate.parse("2025-07-18 15:00"));
         t4.addTag("documentation");
         t4.addTag("ga");
         taskManager.addTask(t4);
 
-        Task t5 = new Task(10, "Requirements analysis", LocalDate.parse("2025-06-25"));
+        Task t5 = new Task(10, "Requirements analysis", LocalDate.parse("2025-06-25 12:00"));
         t5.addTag("project");
         t5.addTag("analysis");
         taskManager.addTask(t5);
