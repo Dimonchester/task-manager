@@ -1,11 +1,23 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
+mainClassName = 'org.example.Main' // Укажите главный класс
+
+shadowJar {
+    archiveBaseName.set('task-manager')
+    archiveVersion.set('1.0')
+    archiveClassifier.set('')
+    mergeServiceFiles()
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
 repositories {
     mavenCentral()
 }
