@@ -4,7 +4,7 @@ import model.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,9 +16,9 @@ class EDFSchedulerTest {
     @BeforeEach
     void setUp() {
         scheduler = new EDFScheduler();
-        task1 = new Task(1, "Earlier Task", LocalDate.now().plusDays(1));
-        task2 = new Task(2, "Later Task", LocalDate.now().plusDays(5));
-        task3 = new Task(3, "Middle Task", LocalDate.now().plusDays(3));
+        task1 = new Task(1, "Earlier Task", LocalDateTime.now().plusDays(1));
+        task2 = new Task(2, "Later Task", LocalDateTime.now().plusDays(5));
+        task3 = new Task(3, "Middle Task", LocalDateTime.now().plusDays(3));
         task4 = new Task(4, "No Deadline Task", null);
     }
 

@@ -5,7 +5,7 @@ import model.TaskDependency;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ class CycleDetectorTest {
     @BeforeEach
     void setUp() {
         detector = new CycleDetector();
-        LocalDate deadline = LocalDate.now();
+        LocalDateTime deadline = LocalDateTime.now();
         task1 = new Task(1, "Task 1", deadline);
         task2 = new Task(2, "Task 2", deadline);
         task3 = new Task(3, "Task 3", deadline);
