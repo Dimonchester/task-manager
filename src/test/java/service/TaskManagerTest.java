@@ -150,7 +150,7 @@ class TaskManagerTest {
         taskManager.addTask(task3);
         taskManager.addTask(task4);
 
-        List<Task> scheduled = taskManager.getScheduledTasks();
+        List<Task> scheduled = taskManager.getScheduledTasksByEDF();
         assertEquals(4, scheduled.size());
         assertEquals(task4, scheduled.get(0));
         assertEquals(task1, scheduled.get(1));
@@ -164,7 +164,7 @@ class TaskManagerTest {
         taskManager.addTask(task2);
         taskManager.addTask(task4);
 
-        List<Task> sorted = taskManager.getTasksSortedBy(Comparator.comparing(Task::getTitle));
+        List<Task> sorted = taskManager.getTasksSortedByQuickSort(Comparator.comparing(Task::getTitle));
 
         assertEquals(3, sorted.size());
         assertEquals(task4, sorted.get(0));
