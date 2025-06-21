@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,10 +9,10 @@ public class Task implements Comparable<Task> {
     private final int id;
     private String title;
     private String description;
-    private LocalDate deadline;
+    private LocalDateTime deadline;
     private final Set<String> tags = new HashSet<>();
 
-    public Task(int id, String title, LocalDate deadline) {
+    public Task(int id, String title, LocalDateTime deadline) {
         this.id = id;
         this.title = title;
         this.deadline = deadline;
@@ -23,8 +23,8 @@ public class Task implements Comparable<Task> {
     public void setTitle(String title) { this.title = title; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-    public LocalDate getDeadline() { return deadline; }
-    public void setDeadline(LocalDate deadline) { this.deadline = deadline; }
+    public LocalDateTime getDeadline() { return deadline; }
+    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline; }
     public Set<String> getTags() { return new HashSet<>(tags); }
     public void addTag(String tag) { tags.add(tag.toLowerCase()); }
     public void removeTag(String tag) { tags.remove(tag.toLowerCase()); }
