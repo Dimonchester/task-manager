@@ -15,7 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
         addInitialData();
-        System.out.println("Welcome to Task Manager!");
 
         boolean running = true;
         while (running) {
@@ -39,7 +38,7 @@ public class Main {
                 default: System.out.println("Invalid option. Please try again.");
             }
         }
-        System.out.println("Exiting Task Manager. Goodbye!");
+        System.out.println("Exiting Task Manager");
     }
 
     private static void printMenu() {
