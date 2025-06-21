@@ -1,43 +1,26 @@
-# Task Manager (Java)
-Менеджер задач с ручной реализацией алгоритмов и структур данных.
+# Менеджер задач с планировщиком EDF
 
-## Функции
-- Создание, удаление, редактирование задач.
-- Сортировка (Tim Sort), поиск (бинарный + хеш-таблица).
-- Зависимости между задачами (топологическая сортировка).
-- Планирование (EDF + приоритетная очередь).
 
-## Сборка
-```bash
-git clone https://github.com/Dimonchester/task-manager.git
-cd task-manager
-./gradlew build
-./gradlew run
-```
-# Task Manager with EDF Scheduling
 
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
+Система управления задачами на Java, реализующая алгоритм планирования "Самый ранний срок" (Earliest Deadline First - EDF) для приоритизации задач по срокам выполнения.
 
-A Java-based task management system that implements the Earliest Deadline First (EDF) scheduling algorithm to prioritize tasks based on their deadlines.
+## Особенности
 
-## Features
+- 🚀 **Планирование по EDF**: Задачи обрабатываются в порядке их сроков выполнения
+- 📝 **Управление задачами**: Добавление, просмотр и обработка задач
+- ⏰ **Отслеживание сроков**: Приоритизация задач на основе дат выполнения
+- 🏷️ **Система тегов**: Организация задач с помощью пользовательских тегов
+- 📅 **Проверка дат**: Обеспечение правильного формата дат (YYYY-MM-DD)
+- 🔄 **Сохранение состояния**: Задачи остаются доступными до их обработки
 
-- 🚀 **EDF Scheduling**: Tasks processed in deadline order
-- 📝 **Task Management**: Add, view, and process tasks
-- ⏰ **Deadline Tracking**: Prioritization based on due dates
-- 🏷️ **Tagging System**: Organize tasks with custom tags
-- 📅 **Date Validation**: Ensures correct date format (YYYY-MM-DD)
-- 🔄 **Persistent State**: Tasks remain available until processed
+## Начало работы
 
-## Getting Started
+### Требования
 
-### Prerequisites
-
-- Java JDK 17+
+- Java JDK 17 или новее
 - Gradle 7.0+
 
-### Installation
+### Установка
 
 ```bash
 git clone https://github.com/Dimonchester/task-manager.git
@@ -45,14 +28,14 @@ cd task-manager
 ./gradlew build
 ```
 
-### Run Application
+### Запуск приложения
 ```bash
 ./gradlew run
 ```
 
-## Usage
+## Использование
 
-### Main Menu
+### Главное меню
 ```
 Task Manager with EDF Scheduling
 --------------------------------
@@ -63,46 +46,33 @@ Menu:
 4. Exit
 ```
 
-### Adding a Task
-1. Select option 1
-2. Enter:
-    - ID (integer)
-    - Title
-    - Deadline (YYYY-MM-DD)
-    - Description (optional)
-    - Tags (comma-separated, optional)
+### Добавление задачи
+1. Выберите пункт 1
+2. Введите:
+    - ID (целое число)
+    - Название
+    - Срок выполнения (в формате ГГГГ-ММ-ДД)
+    - Описание (необязательно)
+    - Теги (через запятую, необязательно)
 
-### Processing Tasks
-1. Select option 2
-2. Tasks display in deadline order
-3. Press Enter to process each task
+### Обработка задач
+1. Выберите пункт 2
+2. Задачи отображаются в порядке сроков выполнения
+3. Нажимайте Enter для последовательной обработки задач
 
-### Viewing All Tasks
-1. Select option 3
-2. All tasks display in deadline order
+### Просмотр всех задач
+1. Выберите пункт 3
+2. Все задачи отображаются в порядке сроков выполнения
 
-## Project Structure
+## Основные классы
 
-```
-src/
-├── main/
-│   ├── java/
-│   │   ├── org.example/Main.java
-│   │   ├── algorithm/EDFScheduler.java
-│   │   └── model/Task.java
-│   └── resources/
-build.gradle
-```
+| Класс           | Описание                                                                 |
+|-----------------|--------------------------------------------------------------------------|
+| `Task.java`     | Представляет задачу с ID, названием, сроком, описанием и тегами         |
+| `EDFScheduler.java` | Реализует очередь задач с PriorityQueue и алгоритм планирования EDF   |
+| `Main.java`     | Обрабатывает взаимодействие с пользователем, меню и поток приложения    |
 
-## Key Classes
-
-| Class           | Description                                                                 |
-|-----------------|-----------------------------------------------------------------------------|
-| `Task.java`     | Represents a task with ID, title, deadline, description, and tags           |
-| `EDFScheduler.java` | Implements task queue using PriorityQueue and EDF scheduling algorithm    |
-| `Main.java`     | Handles user interaction, menu system, and application flow                 |
-
-## Example Session
+## Пример работы
 
 ```
 Add New Task
@@ -122,6 +92,6 @@ Description: Finish implementation
 Tags: urgent, work
 ```
 
-## License
+## Лицензия
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Распространяется под лицензией MIT. Подробнее см. в файле `LICENSE`.
