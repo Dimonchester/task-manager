@@ -3,7 +3,7 @@ import model.Task;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +16,7 @@ class TagFilterTest {
     @BeforeEach
     void setUp() {
         tagFilter = new TagFilter();
-        LocalDate deadline = LocalDate.now();
+        LocalDateTime deadline = LocalDateTime.now();
         task1 = new Task(1, "Task 1", deadline);
         task1.addTag("urgent");
         task1.addTag("important");
