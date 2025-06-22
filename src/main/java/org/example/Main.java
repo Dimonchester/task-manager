@@ -34,7 +34,8 @@ public class Main {
                 case "10": findTasksByTag(); break;
                 case "11": showTasksSortedByQuickSort_Id(); break;
                 case "12": showTasksSortedByQuickSort_Title(); break;
-                case "13": running = false; break;
+                case "13": visualizeDependencies(); break;
+                case "14": running = false; break;
                 default: System.out.println("Invalid option. Please try again.");
             }
         }
@@ -56,7 +57,8 @@ public class Main {
         System.out.println("10. Find tasks by tag");
         System.out.println("11. Demo QuickSort: sort by ID");
         System.out.println("12. Demo QuickSort: sort by Title");
-        System.out.println("13. Exit");
+        System.out.println("13. Visualize the dependency graph");
+        System.out.println("14. Exit");
         System.out.print("Select an option: ");
     }
 
@@ -273,5 +275,12 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error adding initial dependencies: " + e.getMessage());
         }
+    }
+
+    private static void visualizeDependencies() {
+        System.out.print("Enter a file name to save the graph (without an extension): ");
+        String filename = scanner.nextLine().trim();
+        taskManager.visualizeDependencies(filename);
+        System.out.println("Dependency graph saved to a file " + filename + ".png");
     }
 }
